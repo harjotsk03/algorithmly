@@ -1,38 +1,291 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: main;
+  src: url(./fonts/Utendo-Regular.ttf);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: secondary;
+  src: url(./fonts/Utendo-Light.ttf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: third;
+  src: url(./fonts/Utendo-Semibold.ttf);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@font-face {
+  font-family: bold;
+  src: url(./fonts/Utendo-Bold.ttf);
+}
+
+:root {
+  --bg: #090909;
+  --bg2: #141414;
+  --green1: rgb(24, 96, 65);
+  --green2: #0d3423;
+  --green3: #3b7c60;
+}
+
+.sortApplication{
+    background-color: var(--bg);
+    height: 150vh;
+}
+
+.bgColor{
+  background-color: var(--bg);
+}
+
+.bgColor2{
+  background-color: #121212;
+  border: 2.5px solid #2e2e2e;
+}
+
+.imgHome{
+  width: 25vw;
+  position: fixed;
+  top: 28vh;
+  left: 22vw;
+}
+
+.sortApplicationLeft{
+    background-color: #161616;
+}
+
+.main{
+  font-family: main;
+}
+
+.secondary{
+  font-family: secondary;
+}
+
+.bold{
+  font-family: bold;
+}
+
+.third{
+  font-family: third;
+}
+
+.tools{
+  color: #5a5a5a;
+}
+
+.btnNav{
+  color: white;
+  font-family: main;
+  text-align: left;
+  padding: 1vw 2vw;
+  width: 12vw;
+  margin-left: 1vw;
+  background-color: transparent;
+  border-radius: 15px;  
+  opacity: 50%;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+}
+
+.btnNav img{
+  width: 25px;
+}
+
+.btnNav.active {
+  color: white;
+  font-family: main;
+  text-align: left;
+  padding: 1vw 2vw;
+  width: 12vw;
+  margin-left: 1vw;
+  background-color: #000000;
+  border-radius: 15px;  
+  opacity: 100%;
+}
+
+.btnSort {
+  color: white;
+  font-family: main;
+  text-align: left;
+  padding: 0.6vw 1vw;
+  width: 10vw;
+  background-color: transparent;
+  border-radius: 10px;  
+  opacity: 40%;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Add opacity transition */
+}
+
+.btnSort:hover {
+  background-color: var(--green1);
+  opacity: 100%;
+}
+
+.btnSort.active {
+  background-color: var(--green1);
+  opacity: 100%;
+}
+
+.btnGo{
+  color: white;
+  font-family: main;
+  text-align: center;
+  padding: 0.5vw 1.2vw;
+  background-color: transparent;
+  border-radius: 10px;  
+  opacity: 70%;
+  background-color: var(--green2);
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Add opacity transition */
+}
+
+.btnGo img{
+  width: 25px;
+}
+
+.btnGo:hover{
+  opacity: 100%;
+  background-color: var(--green1);
+}
+
+.btnReset{
+  color: white;
+  font-family: main;
+  text-align: center;
+  padding: 1vw 1vw;
+  background-color: transparent;
+  border-radius: 100%;  
+  opacity: 70%;
+  transition: background-color 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Add opacity transition */
+}
+
+.btnReset img{
+  width: 15px;
+}
+
+.btnReset:hover{
+  opacity: 100%;
+  background-color: var(--bg2);
+}
+
+.sortContainer {
+  display: flex;
+  gap: 3px;
+  height: 65vh;
+  transform: rotateX(180deg); /* Rotate the container 180 degrees */
+}
+
+.scrollable-content {
+  max-height: calc(100vh - 120px); /* Adjust the height accordingly to accommodate the static elements */
+  overflow-y: auto;
+}
+
+/* Hide the scrollbar */
+.scrollable-content::-webkit-scrollbar {
+  display: none;
+}
+
+
+.sortElement {
+  width: 10px; /* Adjust as needed */
+  height: 50px; /* Adjust as needed */
+  background-color: #5a5a5a; /* Adjust as needed */
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  transition: transform 0.5s ease; /* Transition for transform property */
+}
+
+.flash {
+  animation: flashAnimation 3s ease; /* Define the flash animation */
+}
+
+@keyframes flashAnimation {
+  0% {
+    background-color: #3c906b; /* Default color */
+  }
+  50% {
+    background-color: #3c906b; /* Flashing color */
+  }
+  100% {
+    background-color: #3c906b; /* Default color */
+  }
+}
+
+.flash2 {
+  animation: flashAnimation2 3s ease; /* Define the flash animation */
+}
+
+@keyframes flashAnimation2 {
+  0% {
+    background-color: #5a5a5a;
+  }
+  40% {
+    background-color: var(--green3); /* Flashing color */
+  }
+  60% {
+    background-color: #5a5a5a; /* Default color */
+  }
+}
+
+/* Inside your App.css file or any other CSS file where you define styles */
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  margin-bottom: 2.5vh;
+  background: #d3d3d3;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;  
+  border-radius: 50%;
+  background: var(--green3);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--green3);
+  cursor: pointer;
+}
+
+.explainBox{
+  background-color: var(--green2);
+  border: 2px solid var(--green1);
+  margin-bottom: 1vw;
+}
+
+.explainContent{
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.explainContentTitle{
+  color: var(--green3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.sudoBox{
+  background-color: var(--bg2);
+  border: 2px solid #2e2e2e;
+  margin-bottom: 8vw;
 }
+
+.sudoContent{
+  color: white;
+}
+.sudoContentTitle{
+  color: var(--green3);
+}
+
